@@ -9,7 +9,9 @@ using Microsoft.AspNetCore.JsonPatch;
 
 namespace Commander.Controllers { 
 
-        
+    //The [] are attributes: declarative tags to give runtime info for the whole class
+    //controller level route (base route): how you get to resources/api endpoints
+    //Route(".."): matches URI to an action -->  will use the routing path from actions   
     [Route("api/commands")]
     [ApiController]
     public class CommandsController : ControllerBase {
@@ -34,11 +36,13 @@ namespace Commander.Controllers {
         public ActionResult <IEnumerable<CommandReadDTO>> GetAllCommands() {
             var commandItems = _repository.GetAllCommands();
 
-            return Ok(_mapper.Map<IEnumerable<CommandReadDTO>>(commandItems));
+            return Ok(_mapper.Map<IEnumerable<CommandReadDTO>>(commandItems)); //will map commandItems to the DTO instance
+            //return HTTP 200 OK result + commandItems
         }
 
         //GET api/commands/{id}
-        [HttpGet("{id}", Name ="GetCommandById")]
+        //putting {id} gives us a route to this action result, respond to: "GET api/commands/5"
+        [HttpGet("{id}", Name ="GetCommandById")] //since this one and above both respond to GET (same verb), their URI must be differentiated
         public ActionResult <CommandReadDTO> GetCommandById(int id) {
             var commandItem = _repository.GetCommandById(id);
             if (commandItem != null) {
@@ -70,8 +74,10 @@ namespace Commander.Controllers {
                 return NotFound();
             }
 
+            //maps the newly created model to the requested one from repo --> updates dbcontext directly
             _mapper.Map(c, commandModelFromRepo);
 
+            //still going to call the repo method although it's empty, some implementations may require it
             _repository.UpdateCommand(commandModelFromRepo);
 
             _repository.SaveChanges();
@@ -86,9 +92,12 @@ namespace Commander.Controllers {
             if (commandModelFromRepo == null) {
                 return NotFound();
             }
-
+            //we are receiving the patchDoc from client, to apply the patch:
+            //map repo model to dto
             var commandToPatch = _mapper.Map<CommandUpdateDTO>(commandModelFromRepo);
+            //applying patch
             patchDoc.ApplyTo(commandToPatch, ModelState);
+            //validation
             if (!TryValidateModel(commandToPatch)) {
                 return ValidationProblem(ModelState);
             }

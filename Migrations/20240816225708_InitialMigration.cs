@@ -11,8 +11,8 @@ namespace Commander.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    HowTo = table.Column<string>(maxLength: 250, nullable: false),
+                        .Annotation("SqlServer:Identity", "1, 1"), //id auto-increment
+                    HowTo = table.Column<string>(maxLength: 250, nullable: false), //the rest: not nullable
                     Line = table.Column<string>(nullable: false),
                     Platform = table.Column<string>(nullable: false)
                 },
