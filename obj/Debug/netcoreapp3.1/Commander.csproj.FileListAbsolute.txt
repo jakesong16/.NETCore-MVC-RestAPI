@@ -1,0 +1,6 @@
+C:\Users\songj\Desktop\Commander\obj\Debug\netcoreapp3.1\Commander.csproj.AssemblyReference.cache
+C:\Users\songj\Desktop\Commander\obj\Debug\netcoreapp3.1\Commander.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\songj\Desktop\Commander\obj\Debug\netcoreapp3.1\Commander.AssemblyInfoInputs.cache
+C:\Users\songj\Desktop\Commander\obj\Debug\netcoreapp3.1\Commander.AssemblyInfo.cs
+C:\Users\songj\Desktop\Commander\obj\Debug\netcoreapp3.1\Commander.csproj.CoreCompileInputs.cache
+C:\Users\songj\Desktop\Commander\obj\Debug\netcoreapp3.1\Commander.MvcApplicationPartsAssemblyInfo.cache
