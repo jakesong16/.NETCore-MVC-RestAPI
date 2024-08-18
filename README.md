@@ -1,5 +1,5 @@
 # CLI Commands REST API (ASP.NET Core MVC)
-#### It is helpful to have an API that returns us CLI commands that we may often forget. This Commands API stores command line snippets along with a short description of what it does, as well as which platform it's for.
+#### It is very helpful to have an API that returns us CLI commands that we may often forget. This Commands API stores command line snippets along with a short description of what it does, as well as which platform it's for.
 ### The purpose of this project is to learn and practice concepts related to:
 > - Building a REST API
 > - .NET Core
